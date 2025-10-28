@@ -1,0 +1,257 @@
+/* Paleta de colores definida por el usuario */
+:root{
+  --bg-main: #0f0f11; /* Fondo principal (body) */
+  --bg-secondary: #1a1b1f; /* Fondo secundario (secciones/tarjetas) */
+  --purple: #8b5cf6; /* Morado principal (acento) */
+  --purple-soft: #a78bfa; /* Morado suave (hover/sombra) */
+  --text: #e5e5e5; /* Texto principal */
+  --text-muted: #9ca3af; /* Texto secundario */
+  --glass-alpha: 0.14; /* opacidad base para el glass */
+}
+
+/* Aseguramos que el body use el fondo principal */
+html,body{
+  height:100%;
+  background: var(--bg-main);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  margin:0;
+  padding:0;
+}
+
+/* Hero: mantiene el SVG actual como textura de fondo, pero aporta overlay y centrado */
+.hero {
+  display: flex;
+  width: 100%;
+  min-height: 90vh; /* reducido de 100vh */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-main);
+  background-image: url('../assets/hero-bg.svg');
+  background-repeat: repeat;
+  background-position: center;
+}
+
+/* Card interior */
+.hero-content {
+  position: relative;
+  width: min(960px, 96%); /* reducido de 1100px */
+  margin: 0 auto;
+  padding: 28px; /* reducido de 32px */
+  display: flex;
+  gap: 20px; /* reducido de 24px */
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: left;
+  background: linear-gradient(180deg, rgba(255,255,255,var(--glass-alpha)) 0%, rgba(255,255,255,0.02) 100%);
+  background-color: rgba(26,27,31,0.55);
+  z-index: 2;
+  border-radius: 14px; /* reducido de 16px */
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  border: 1px solid rgba(167,139,250,0.06);
+  box-sizing: border-box;
+}
+
+/* Avatar column */
+.hero-avatar-container {
+  flex: 0 0 240px; /* reducido de 280px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px; /* reducido de 8px */
+}
+
+/* Texto column takes remaining space */
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+/* Título principal */
+.hero-title {
+  font-size: clamp(22px, 3.2vw, 36px); /* reducido de 24px, 3.6vw, 40px */
+  line-height: 1.1;
+  margin: 0;
+  color: var(--text);
+  text-shadow: 0 6px 30px rgba(167,139,250,0.06);
+  letter-spacing: -0.01em;
+}
+
+/* Subtítulo / descripción */
+.hero-subtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: clamp(14px, 1.6vw, 16px); /* reducido de 14px, 1.9vw, 18px */
+  max-width: 60ch; /* reducido de 68ch */
+}
+
+/* CTA row */
+.hero-buttons{
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px; /* añadido espacio pequeño */
+}
+
+/* Botón CTA */
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px; /* reducido de 12px 18px */
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--purple) 0%, #7f4bf0 60%, var(--purple-soft) 100%);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px; /* reducido de 15px */
+  border: 0;
+  box-shadow:
+    0 6px 22px rgba(139,92,246,0.18),
+    0 2px 6px rgba(0,0,0,0.45);
+  transition: transform .14s ease, box-shadow .14s ease, filter .14s ease;
+  will-change: transform;
+}
+
+/* Hover / focus accesible */
+.hero-button:hover,
+.hero-button:focus {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 34px rgba(167,139,250,0.22),
+    0 4px 10px rgba(0,0,0,0.5);
+  outline: none;
+  filter: saturate(110%);
+}
+
+.hero-button.secondary {
+  background: transparent;
+  color: var(--purple);
+  border: 1px solid rgba(139,92,246,0.12);
+  box-shadow: none;
+}
+
+/* Social buttons */
+.hero-socials{
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.social-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width:40px; /* reducido de 44px */
+  height:40px;
+  border-radius:10px;
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+  transition: background 180ms ease, transform 160ms ease, box-shadow 160ms ease;
+  text-decoration:none;
+  border: 1px solid rgba(255,255,255,0.02);
+  box-sizing: border-box;
+}
+
+.social-btn:hover,
+.social-btn:focus {
+  background: linear-gradient(180deg, rgba(167,139,250,0.06), rgba(139,92,246,0.04));
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(139,92,246,0.12);
+  color: #fff;
+  outline: none;
+}
+
+.social-svg{
+  width:20px;
+  height:20px;
+  display:block;
+}
+
+/* Avatar image */
+.hero-avatar{
+  width: 100%;
+  max-width: 220px; /* reducido de 250px */
+  border-radius: 16px; /* reducido de 18px */
+  border: 3px solid rgba(139,92,246,0.14); /* reducido de 4px */
+  box-shadow: 0 18px 50px rgba(4,6,10,0.6), 0 6px 18px rgba(139,92,246,0.06);
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.hero-avatar:hover {
+  transform: translateY(-6px) scale(1.02);
+  opacity: 0.95;
+}
+
+/* Responsive adjustments */
+
+/* Medium screens: tighten layout and allow wrapping */
+@media (max-width: 1024px) {
+  .hero-content {
+    padding: 24px;
+    gap: 16px;
+  }
+  .hero-avatar-container { flex-basis: 220px; }
+  .hero-avatar { max-width: 200px; }
+}
+
+/* Small / tablet: stack columns and center content */
+@media (max-width: 880px) {
+  .hero {
+    min-height: 50vh; /* reducido de 60vh */
+  }
+
+  .hero-content {
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: min(640px, 96%); /* reducido de 720px */
+    gap: 16px;
+  }
+
+  .hero-avatar-container {
+    order: 0;
+    flex-basis: auto;
+  }
+
+  .hero-text-container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-avatar { max-width: 180px; }
+}
+
+/* Small phones: compact sizes */
+@media (max-width: 520px) {
+  .hero {
+    padding: 32px 12px;
+  }
+  .hero-avatar { max-width: 130px; }
+  .hero-button { padding: 8px 12px; }
+  .social-btn { 
+    width: 36px;
+    height: 36px;
+    padding: 7px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .hero-avatar { max-width: 120px; }
+  .hero-title { font-size: 18px; }
+  .hero-subtitle { font-size: 13px; }
+  .hero-content { border-radius: 12px; }
+}
