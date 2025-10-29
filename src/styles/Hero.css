@@ -1,15 +1,14 @@
 /* Paleta de colores definida por el usuario */
 :root{
-  --bg-main: #0f0f11; /* Fondo principal (body) */
-  --bg-secondary: #1a1b1f; /* Fondo secundario (secciones/tarjetas) */
-  --purple: #8b5cf6; /* Morado principal (acento) */
-  --purple-soft: #a78bfa; /* Morado suave (hover/sombra) */
-  --text: #e5e5e5; /* Texto principal */
-  --text-muted: #9ca3af; /* Texto secundario */
-  --glass-alpha: 0.14; /* opacidad base para el glass */
+  --bg-main: #0f0f11;
+  --bg-secondary: #1a1b1f;
+  --purple: #8b5cf6;
+  --purple-soft: #a78bfa;
+  --text: #e5e5e5;
+  --text-muted: #9ca3af;
+  --glass-alpha: 0.12;
 }
 
-/* Aseguramos que el body use el fondo principal */
 html,body{
   height:100%;
   background: var(--bg-main);
@@ -21,29 +20,58 @@ html,body{
   padding:0;
 }
 
-/* Hero: mantiene el SVG actual como textura de fondo, pero aporta overlay y centrado */
 .hero {
   display: flex;
   width: 100%;
-  min-height: 90vh; /* reducido de 100vh */
+  min-height: 90vh;
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
   background-color: var(--bg-main);
   background-image: url('../assets/hero-bg.svg');
-  background-repeat: repeat;
-  background-position: center;
+  background-repeat: no-repeat; /* evita tiling */
+  background-size: cover;
+  padding: 48px 20px;
 }
 
-/* Card interior */
+/* Section divider: suave transición entre secciones */
+.section-divider{
+  height: 96px;
+  width: 100%;
+  background: linear-gradient(180deg,
+    rgba(15,15,17,0) 0%,
+    rgba(167,139,250,0.06) 25%,
+    rgba(26,27,31,0.98) 100%
+  );
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  pointer-events: none;
+  transition: background 320ms ease;
+}
+
+/* add subtle top wave using pseudo element */
+.section-divider::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20px;
+  height: 48px;
+  background: radial-gradient(60% 100% at 50% 0%, rgba(167,139,250,0.04), transparent 40%);
+  filter: blur(18px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 .hero-content {
   position: relative;
-  width: min(960px, 96%); /* reducido de 1100px */
+  width: min(960px, 96%);
   margin: 0 auto;
-  padding: 28px; /* reducido de 32px */
+  padding: 32px;
   display: flex;
-  gap: 20px; /* reducido de 24px */
+  gap: 24px; 
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
@@ -51,22 +79,24 @@ html,body{
   background: linear-gradient(180deg, rgba(255,255,255,var(--glass-alpha)) 0%, rgba(255,255,255,0.02) 100%);
   background-color: rgba(26,27,31,0.55);
   z-index: 2;
-  border-radius: 14px; /* reducido de 16px */
+  border-radius: 16px;
   box-shadow: 0 10px 30px rgba(2,6,23,0.6);
   border: 1px solid rgba(167,139,250,0.06);
   box-sizing: border-box;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-radius: 12px;
 }
 
 /* Avatar column */
 .hero-avatar-container {
-  flex: 0 0 240px; /* reducido de 280px */
+  flex: 0 0 240px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px; /* reducido de 8px */
+  padding: 8px;
 }
 
-/* Texto column takes remaining space */
 .hero-text-container {
   display: flex;
   flex-direction: column;
@@ -74,9 +104,8 @@ html,body{
   text-align: left;
 }
 
-/* Título principal */
 .hero-title {
-  font-size: clamp(22px, 3.2vw, 36px); /* reducido de 24px, 3.6vw, 40px */
+  font-size: clamp(24px, 3.2vw, 36px);
   line-height: 1.1;
   margin: 0;
   color: var(--text);
@@ -84,20 +113,18 @@ html,body{
   letter-spacing: -0.01em;
 }
 
-/* Subtítulo / descripción */
 .hero-subtitle {
   margin: 0;
   color: var(--text-muted);
-  font-size: clamp(14px, 1.6vw, 16px); /* reducido de 14px, 1.9vw, 18px */
-  max-width: 60ch; /* reducido de 68ch */
+  font-size: clamp(14px, 1.6vw, 16px);
+  max-width: 60ch;
 }
 
-/* CTA row */
 .hero-buttons{
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 4px; /* añadido espacio pequeño */
+  margin-top: 4px;
 }
 
 /* Botón CTA */
@@ -105,13 +132,13 @@ html,body{
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px; /* reducido de 12px 18px */
+  padding: 12px 18px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--purple) 0%, #7f4bf0 60%, var(--purple-soft) 100%);
   color: white;
   text-decoration: none;
   font-weight: 600;
-  font-size: 14px; /* reducido de 15px */
+  font-size: 16px;
   border: 0;
   box-shadow:
     0 6px 22px rgba(139,92,246,0.18),
@@ -120,7 +147,6 @@ html,body{
   will-change: transform;
 }
 
-/* Hover / focus accesible */
 .hero-button:hover,
 .hero-button:focus {
   transform: translateY(-3px);
@@ -138,7 +164,6 @@ html,body{
   box-shadow: none;
 }
 
-/* Social buttons */
 .hero-socials{
   display: flex;
   gap: 12px;
@@ -151,7 +176,7 @@ html,body{
   align-items: center;
   justify-content: center;
   padding: 10px;
-  width:40px; /* reducido de 44px */
+  width:40px;
   height:40px;
   border-radius:10px;
   color: var(--text);
@@ -177,12 +202,11 @@ html,body{
   display:block;
 }
 
-/* Avatar image */
 .hero-avatar{
   width: 100%;
-  max-width: 220px; /* reducido de 250px */
-  border-radius: 16px; /* reducido de 18px */
-  border: 3px solid rgba(139,92,246,0.14); /* reducido de 4px */
+  max-width: 220px;
+  border-radius: 16px; 
+  border: 3px solid rgba(139,92,246,0.14);
   box-shadow: 0 18px 50px rgba(4,6,10,0.6), 0 6px 18px rgba(139,92,246,0.06);
   transition: transform 300ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
   display: block;
@@ -194,22 +218,25 @@ html,body{
   opacity: 0.95;
 }
 
-/* Responsive adjustments */
+@media (max-width: 1280px) {
+  .hero-content {
+    width: 60%;
+    padding: 28px;
+    gap: 20px;
+  }
+}
 
-/* Medium screens: tighten layout and allow wrapping */
 @media (max-width: 1024px) {
   .hero-content {
+    width: 70%;
     padding: 24px;
     gap: 16px;
   }
-  .hero-avatar-container { flex-basis: 220px; }
-  .hero-avatar { max-width: 200px; }
 }
 
-/* Small / tablet: stack columns and center content */
 @media (max-width: 880px) {
   .hero {
-    min-height: 50vh; /* reducido de 60vh */
+    min-height: 60vh; 
   }
 
   .hero-content {
@@ -217,7 +244,8 @@ html,body{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: min(640px, 96%); /* reducido de 720px */
+    width: 80%;
+    height: 80%;
     gap: 16px;
   }
 
@@ -234,7 +262,6 @@ html,body{
   .hero-avatar { max-width: 180px; }
 }
 
-/* Small phones: compact sizes */
 @media (max-width: 520px) {
   .hero {
     padding: 32px 12px;
@@ -248,7 +275,16 @@ html,body{
   }
 }
 
-/* Very small phones */
+@media (max-width: 440px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-avatar { max-width: 120px; }
+  .hero-title { font-size: 20px; }
+  .hero-subtitle { font-size: 14px; }
+}
+
 @media (max-width: 380px) {
   .hero-avatar { max-width: 120px; }
   .hero-title { font-size: 18px; }

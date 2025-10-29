@@ -1,0 +1,71 @@
+:root {
+  --bg-secondary: #1a1b1f;
+  --purple: #8b5cf6;
+  --purple-soft: #a78bfa;
+  --text: #e5e5e5;
+  --muted: #9ca3af;
+}
+
+.contact {
+  background: linear-gradient(180deg, rgba(26,27,31,0.98) 0%, rgba(26,27,31,0.99) 100%);
+  color: var(--text);
+  padding: 56px 20px;
+  /* small upward overlap so divider and contact blend */
+  margin-top: -16px;
+}
+
+.contact-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(167,139,250,0.04);
+}
+
+.contact h2 { margin: 0 0 8px 0; font-size: 1.4rem; }
+.contact-desc { margin: 0 0 18px 0; color: var(--muted); }
+
+.contact-form {
+  display: grid;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(167,139,250,0.04);
+}
+
+.contact-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  box-shadow: 0 6px 20px rgba(139,92,246,0.12);
+  border-color: rgba(139,92,246,0.18);
+}
+
+.hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+.contact-actions { display:flex; gap:10px; align-items:center; margin-top:6px; }
+
+.btn { padding: 10px 14px; border-radius: 999px; cursor: pointer; border: none; }
+.btn-primary { background: linear-gradient(90deg, var(--purple), var(--purple-soft)); color: #fff; font-weight:600; }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid rgba(255,255,255,0.03); }
+
+.contact-status { margin: 8px 0 0; font-size:0.95rem; color: var(--muted); }
+.contact-status.ok { color: #9be6b8; } /* success */
