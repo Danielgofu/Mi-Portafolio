@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'MinecraftFont';
+  src: url('../fonts/minecraft_fot_esp.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 /* Paleta de colores definida por el usuario */
 :root{
   --bg-main: #0f0f11;
@@ -33,36 +39,6 @@ html,body{
   background-repeat: no-repeat; /* evita tiling */
   background-size: cover;
   padding: 48px 20px;
-}
-
-/* Section divider: suave transición entre secciones */
-.section-divider{
-  height: 96px;
-  width: 100%;
-  background: linear-gradient(180deg,
-    rgba(15,15,17,0) 0%,
-    rgba(167,139,250,0.06) 25%,
-    rgba(26,27,31,0.98) 100%
-  );
-  position: relative;
-  margin-top: 0;
-  margin-bottom: 0;
-  pointer-events: none;
-  transition: background 320ms ease;
-}
-
-/* add subtle top wave using pseudo element */
-.section-divider::after{
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -20px;
-  height: 48px;
-  background: radial-gradient(60% 100% at 50% 0%, rgba(167,139,250,0.04), transparent 40%);
-  filter: blur(18px);
-  opacity: 0.9;
-  pointer-events: none;
 }
 
 .hero-content {
@@ -105,7 +81,9 @@ html,body{
 }
 
 .hero-title {
-  font-size: clamp(24px, 3.2vw, 36px);
+  font-family: 'MinecraftFont', sans-serif;
+  min-height: 1.2em;  /* Match the TextType min-height */
+  font-size: clamp(24px, 3.2vw, 30px);
   line-height: 1.1;
   margin: 0;
   color: var(--text);
@@ -291,3 +269,5 @@ html,body{
   .hero-subtitle { font-size: 13px; }
   .hero-content { border-radius: 12px; }
 }
+
+/* Fuente original de: Craftron Gaming, Versión editada por: Manin17 */

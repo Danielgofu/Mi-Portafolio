@@ -6,9 +6,8 @@ import linkedinIcon from '../assets/linkedin.svg';
 import mailIcon from '../assets/email.svg';
 import { useState } from 'react';
 
-function Hero() {
+function Hero({children}) {
   const [isHovered, setIsHovered] = useState(false);
-
   return (
     <section className="hero">
       <div className="hero-content">
@@ -23,7 +22,7 @@ function Hero() {
         </div>
 
         <div className="hero-text-container">
-          <h1 className="hero-title">Hola, soy Daniel Gómez</h1>
+          <h1 className="hero-title">{children}</h1>
           <p className="hero-subtitle">
             Desarrollo interfaces limpias, aplicaciones y proyectos que combinan diseño y rendimiento.
           </p>

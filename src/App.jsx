@@ -3,6 +3,7 @@ import Hero from './components/Hero.jsx'
 import Header from './components/Header.jsx'
 import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
+import TextType from './components/TextType.jsx'
 import { useEffect } from 'react';
 
 function App() {
@@ -33,11 +34,19 @@ function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <Hero>
+        <TextType 
+          text={["< Hola soy Daniel Gómez ", "< Bienvenido a mi portafolio "]}
+          typingSpeed={40}
+          pauseDuration={2000}
+          showCursor={true}
+          cursorCharacter="/>"
+        />
+      </Hero>
       <Projects />
       {/* decorative divider for nice transition */}
       <div className="section-divider" aria-hidden="true" />
-      <Contact />  {/* <-- añadir aquí */}
+      <Contact />
     </>
   )
 }
