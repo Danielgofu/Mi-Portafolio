@@ -110,6 +110,7 @@ html,body{
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
   padding: 12px 18px;
   border-radius: 999px;
   background: linear-gradient(90deg, var(--purple) 0%, #7f4bf0 60%, var(--purple-soft) 100%);

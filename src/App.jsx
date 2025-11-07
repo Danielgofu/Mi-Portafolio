@@ -44,8 +44,6 @@ function App() {
         />
       </Hero>
       <Projects />
-      {/* decorative divider for nice transition */}
-      <div className="section-divider" aria-hidden="true" />
       <Contact />
     </>
   )

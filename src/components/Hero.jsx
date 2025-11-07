@@ -4,10 +4,30 @@ import miAvatarSaludo from '../assets/miAvatar-saludo-Photoroom.png';
 import githubIcon from '../assets/github.svg';
 import linkedinIcon from '../assets/linkedin.svg';
 import mailIcon from '../assets/email.svg';
+import { gsap } from "gsap";
+import {ScrollToPlugin} from 'gsap/ScrollToPlugin';
 import { useState } from 'react';
 
+gsap.registerPlugin(ScrollToPlugin);
+
 function Hero({children}) {
+  
+document.querySelector('.btn-hero').addEventListener('click', (e) => {
+  e.preventDefault();
+  const target = document.querySelector('#servicios-lista');
+  // Ajustar el offset dinámicamente según el tamaño de la pantalla
+  const offset = window.innerWidth <= 768 ? -50 : -100;
+  const targetPosition =
+    target.getBoundingClientRect().top + window.scrollY + offset;
+  // Usar GSAP para animar el desplazamiento
+  gsap.to(window, {
+    scrollTo: { y: targetPosition, autoKill: true },
+    duration: 1,
+    ease: 'power2.out',
+  });
+});
   const [isHovered, setIsHovered] = useState(false);
+
   return (
     <section className="hero">
       <div className="hero-content">
@@ -28,10 +48,19 @@ function Hero({children}) {
           </p>
 
           <div className="hero-buttons">
-            <a href="#projects" className="hero-button">Ver proyectos</a>
-            <a href="#contact" className="hero-button secondary">Contactame</a>
+            <a
+              href="#projects" 
+              className="hero-button"
+              >
+                Ver proyectos
+            </a>
+            <a
+              href="#"
+              className="hero-button secondary"
+            >
+              Contáctame
+            </a>          
           </div>
-
           <div className="hero-socials" aria-label="Redes sociales">
             <a
               className="social-btn"
