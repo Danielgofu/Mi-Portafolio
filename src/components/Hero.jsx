@@ -4,37 +4,46 @@ import miAvatarSaludo from '../assets/miAvatar-saludo-Photoroom.png';
 import githubIcon from '../assets/github.svg';
 import linkedinIcon from '../assets/linkedin.svg';
 import mailIcon from '../assets/email.svg';
-import { gsap } from "gsap";
-import {ScrollToPlugin} from 'gsap/ScrollToPlugin';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-gsap.registerPlugin(ScrollToPlugin);
-
-function Hero({children}) {
-  
-document.querySelector('.btn-hero').addEventListener('click', (e) => {
-  e.preventDefault();
-  const target = document.querySelector('#servicios-lista');
-  // Ajustar el offset dinámicamente según el tamaño de la pantalla
-  const offset = window.innerWidth <= 768 ? -50 : -100;
-  const targetPosition =
-    target.getBoundingClientRect().top + window.scrollY + offset;
-  // Usar GSAP para animar el desplazamiento
-  gsap.to(window, {
-    scrollTo: { y: targetPosition, autoKill: true },
-    duration: 1,
-    ease: 'power2.out',
-  });
-});
+function Hero({ children }) {
   const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const handleHeroButtonClick = (e) => {
+      e.preventDefault();
+      const target = document.querySelector('#projects');
+      if (!target) return;
+
+      // Scroll suave con desplazamiento
+      const offset = window.innerWidth <= 768 ? -50 : -100;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY + offset;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth' // hace que la transición sea bonita y fluida
+      });
+    };
+
+    const heroButton = document.querySelector('.hero-button');
+    if (heroButton) {
+      heroButton.addEventListener('click', handleHeroButtonClick);
+    }
+
+    return () => {
+      if (heroButton) {
+        heroButton.removeEventListener('click', handleHeroButtonClick);
+      }
+    };
+  }, []);
 
   return (
     <section className="hero">
       <div className="hero-content">
         <div className="hero-avatar-container">
-          <img 
+          <img
             src={isHovered ? miAvatarSaludo : miAvatar}
-            alt="Mi avatar" 
+            alt="Mi avatar"
             className="hero-avatar"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -48,19 +57,14 @@ document.querySelector('.btn-hero').addEventListener('click', (e) => {
           </p>
 
           <div className="hero-buttons">
-            <a
-              href="#projects" 
-              className="hero-button"
-              >
-                Ver proyectos
+            <a className="hero-button">
+              Ver proyectos
             </a>
-            <a
-              href="#"
-              className="hero-button secondary"
-            >
+            <a className="hero-button secondary">
               Contáctame
-            </a>          
+            </a>
           </div>
+
           <div className="hero-socials" aria-label="Redes sociales">
             <a
               className="social-btn"
@@ -95,4 +99,5 @@ document.querySelector('.btn-hero').addEventListener('click', (e) => {
     </section>
   );
 }
+
 export default Hero;
