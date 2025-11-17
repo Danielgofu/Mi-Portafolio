@@ -4,38 +4,28 @@ import miAvatarSaludo from '../assets/miAvatar-saludo-Photoroom.png';
 import githubIcon from '../assets/github.svg';
 import linkedinIcon from '../assets/linkedin.svg';
 import mailIcon from '../assets/email.svg';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 function Hero({ children }) {
   const [isHovered, setIsHovered] = useState(false);
+  const buttonRef = useRef(null);
+  const contactButtonRef = useRef(null);
 
-  useEffect(() => {
-    const handleHeroButtonClick = (e) => {
-      e.preventDefault();
-      const target = document.querySelector('#projects');
-      if (!target) return;
-
-      // Scroll suave con desplazamiento
-      const offset = window.innerWidth <= 768 ? -50 : -100;
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY + offset;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth' // hace que la transición sea bonita y fluida
-      });
-    };
-
-    const heroButton = document.querySelector('.hero-button');
-    if (heroButton) {
-      heroButton.addEventListener('click', handleHeroButtonClick);
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      console.error(`[debug] scrollToSection: target not found -> #${sectionId}`);
+      return;
     }
+    
+    const headerEl = document.querySelector('header');
+    const offset = headerEl ? headerEl.getBoundingClientRect().height + 12 : (window.innerWidth <= 768 ? 50 : 100);
 
-    return () => {
-      if (heroButton) {
-        heroButton.removeEventListener('click', handleHeroButtonClick);
-      }
-    };
-  }, []);
+    section.style.scrollMarginTop = `${offset}px`;
+
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  };
 
   return (
     <section className="hero">
@@ -55,14 +45,21 @@ function Hero({ children }) {
           <p className="hero-subtitle">
             Desarrollo interfaces limpias, aplicaciones y proyectos que combinan diseño y rendimiento.
           </p>
-
           <div className="hero-buttons">
-            <a className="hero-button">
+            <button 
+              ref={buttonRef}
+              className="hero-button"
+              onClick={() => scrollToSection('projects')}
+            >
               Ver proyectos
-            </a>
-            <a className="hero-button secondary">
+            </button>
+            <button 
+              ref={contactButtonRef}
+              className="hero-button secondary"
+              onClick={() => scrollToSection('contact')}
+            >
               Contáctame
-            </a>
+            </button>
           </div>
 
           <div className="hero-socials" aria-label="Redes sociales">
@@ -88,7 +85,7 @@ function Hero({ children }) {
 
             <a
               className="social-btn"
-              href="mailto:tu@correo.com"
+              href="mailto:danielgofu8@gmail.com"
               aria-label="Email"
             >
               <img src={mailIcon} alt="Email" className="social-svg" />

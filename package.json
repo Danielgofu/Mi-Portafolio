@@ -1,13 +1,15 @@
 {
-  "name": "mi_portafolio",
+  "name": "danielgofu-portafolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Portafolio profesional de Daniel Gómez",
+  "author": "Daniel Gómez",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
     "gsap": "^3.13.0",

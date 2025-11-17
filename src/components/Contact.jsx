@@ -55,7 +55,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="contact" id="contact" aria-labelledby="contact-title">
+    <section id="contact" className="contact">
       <div className="contact-inner">
         <h2 id="contact-title">Contacto</h2>
         <p className="contact-desc">¿Tienes un proyecto o quieres colaborar? Escríbeme.</p>
