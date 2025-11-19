@@ -7,6 +7,7 @@ const Switch = ({ isDarkMode, onToggle }) => {
       <div className="toggle-switch">
         <label className="switch-label">
           <input
+            id="modo-oscuro"
             type="checkbox"
             className="checkbox"
             checked={isDarkMode}

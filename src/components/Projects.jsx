@@ -16,7 +16,7 @@ const sampleProjects = [
     id: 2,
     title: 'StyleLab',
     desc: 'Editor visual para personalizar estilos CSS.',
-    tech: ['React', 'CSS', 'Glassmorphism'],
+    tech: ['React', 'CSS'],
     live: '/proyectos/style-lab', // Ruta interna definida en routes.jsx
     repo: 'https://github.com/Danielgofu/StyleLab', // Cambia esto al repositorio real si existe
     image: '' // Imagen del proyecto StyleLab
@@ -46,20 +46,6 @@ export default function Projects() {
               className="project-card" 
               aria-labelledby={`proj-${p.id}`}
             >
-              <div className="project-visual" role="img" aria-label={p.title}>
-                {p.image ? (
-                  <img 
-                    src={p.image} 
-                    alt={p.title}
-                    className="project-image"
-                    loading="lazy"
-                  />
-                ) : (
-                  <span className="pv-initials">
-                    {p.title.split(' ').map(w=>w[0]).slice(0,2).join('')}
-                  </span>
-                )}
-              </div>
 
               <div className="project-body">
                 <h3 id={`proj-${p.id}`} className="project-title">{p.title}</h3>
@@ -96,6 +82,20 @@ export default function Projects() {
                     </svg>
                   </a>
                 </div>
+              </div>
+              <div className="project-visual" role="img" aria-label={p.title}>
+                {p.image ? (
+                  <img 
+                    src={p.image} 
+                    alt={p.title}
+                    className="project-image"
+                    loading="lazy"
+                  />
+                ) : (
+                  <span className="pv-initials">
+                    {p.title.split(' ').map(w=>w[0]).slice(0,2).join('')}
+                  </span>
+                )}
               </div>
             </article>
           ))}
