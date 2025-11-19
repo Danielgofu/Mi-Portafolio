@@ -1,12 +1,12 @@
-import React from 'react';
 import '../styles/Projects.css';
 import dyfWeb from '../assets/DYFWeb.webp';
+// import styleLabPreview from '../assets/styleLabPreview.webp'; // Asegúrate de tener esta imagen en tu carpeta de assets
 
 const sampleProjects = [
   {
     id: 1,
     title: 'Web Dyf Telecomunicaciones',
-    desc: 'Elaboracion de sitio web estático para empresa de telecomunicaciones.',
+    desc: 'Elaboración de sitio web estático para empresa de telecomunicaciones.',
     tech: ['HTML', 'CSS', 'JS'],
     live: 'https://danielgofu.github.io/Dyf/index.html',
     repo: 'https://github.com/Danielgofu/Dyf',
@@ -14,12 +14,12 @@ const sampleProjects = [
   },
   {
     id: 2,
-    title: 'E-commerce demo',
-    desc: 'Tienda de ejemplo con carrito, checkout y optimizaciones de carga de imágenes.',
-    tech: ['React', 'Tailwind', 'Stripe'],
-    live: '#',
-    repo: '#',
-    image: '/projects/ecommerce-preview.png'
+    title: 'StyleLab',
+    desc: 'Editor visual para personalizar estilos CSS.',
+    tech: ['React', 'CSS', 'Glassmorphism'],
+    live: '/proyectos/style-lab', // Ruta interna definida en routes.jsx
+    repo: 'https://github.com/Danielgofu/StyleLab', // Cambia esto al repositorio real si existe
+    image: '' // Imagen del proyecto StyleLab
   },
   {
     id: 3,
@@ -72,7 +72,7 @@ export default function Projects() {
                   <a 
                     className="btn btn-primary" 
                     href={p.live} 
-                    target="_blank" 
+                    target="_blank" // Abrir en la misma pestaña si es ruta interna
                     rel="noopener noreferrer"
                     aria-disabled={p.live === '#'}
                   >
