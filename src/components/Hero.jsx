@@ -5,28 +5,31 @@ import githubIcon from '../assets/github.svg';
 import linkedinIcon from '../assets/linkedin.svg';
 import mailIcon from '../assets/email.svg';
 import React, { useState, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 function Hero({ children }) {
   const [isHovered, setIsHovered] = useState(false);
-  const buttonRef = useRef(null);
-  const contactButtonRef = useRef(null);
+  const buttonRef = useRef();
+  const contactButtonRef = useRef();
+  gsap.registerPlugin(ScrollToPlugin);
 
   const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (!section) {
-      console.error(`[debug] scrollToSection: target not found -> #${sectionId}`);
-      return;
-    }
-    
-    const headerEl = document.querySelector('header');
-    const offset = headerEl ? headerEl.getBoundingClientRect().height + 12 : (window.innerWidth <= 768 ? 50 : 100);
+  const section = document.getElementById(sectionId);
+  if (!section) {
+    console.error(`[debug] scrollToSection: target not found -> #${sectionId}`);
+    return;
+  }
 
-    section.style.scrollMarginTop = `${offset}px`;
+  const headerEl = document.querySelector("header");
+  const offset = headerEl ? headerEl.getBoundingClientRect().height + 12 : (window.innerWidth <= 768 ? 50 : 100);
 
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  };
-
+  gsap.to(window, {
+    duration: 1,
+    scrollTo: { y: section, offsetY: offset, autoKill: true },
+    ease: "power2.out",
+  });
+};
   return (
     <section className="hero">
       <div className="hero-content">

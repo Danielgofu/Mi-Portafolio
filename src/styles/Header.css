@@ -1,9 +1,14 @@
+:root{
+  --purple: #8b5cf6;
+  --purple-soft: #a78bfa;
+}
+
 .header {
     width: 100%;
     background: #0f0f11;
     color: white;
     box-shadow: 0 6px 20px rgba(2,6,23,0.45);
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 50;
 }
@@ -53,8 +58,8 @@
 /* Subtle hover: smaller lift, smoother fade and soft shadow */
 .header-link:hover{
     transform: translateY(-1px) scale(1.01);
-    background: rgba(230,238,248,0.035);
-    box-shadow: 0 8px 20px rgba(2,6,23,0.18);
+    background: #e6eef809;
+    box-shadow: 0 8px 20px #a78bfa86;
     color: #ffffff;
 }
 
@@ -66,10 +71,18 @@
     box-shadow: 0 10px 30px rgba(2,6,23,0.28);
 }
 
-/* improve keyboard focus visibility */
+/* mejor visibilidad del foco del teclado */
 .header-link:focus-visible{
     box-shadow: 0 10px 30px rgba(96,165,250,0.12);
     border: 1px solid rgba(96,165,250,0.18);
+}
+
+/* Estilos para el enlace activo */
+.header-link.active {
+    background: rgba(255, 255, 255, 0.1); /* Fondo más visible */
+    box-shadow: 0 4px 12px #a78bfa; /* Sombra para destacar */
+    color: #ffffff; /* Mantén el texto blanco */
+    border: 1px solid #a78bfa; /* Borde para resaltar */
 }
 
 /* Hamburger menu (mobile) */

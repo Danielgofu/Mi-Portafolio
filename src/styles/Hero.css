@@ -37,6 +37,10 @@ html,body{
   background-color: var(--bg-main);
   background-image: url('../assets/hero-bg.svg');
   background-repeat: no-repeat; /* evita tiling */
+  mask-image: linear-gradient(
+    black 80%,
+    transparent
+  );
   background-size: cover;
   padding: 48px 20px;
 }
