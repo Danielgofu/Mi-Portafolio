@@ -81,7 +81,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;            /* ocultar overflow de la imagen */
   transition: transform 0.3s ease;
   flex-shrink: 0;
 }
@@ -146,6 +145,12 @@
 @media (max-width: 980px) {
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .project-visual { height: 220px; }
+}
+@media (max-width: 768px) {
+  .project-card {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 @media (max-width: 560px) {
