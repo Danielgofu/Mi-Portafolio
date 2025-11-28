@@ -171,3 +171,22 @@
         display: inline-block;
     }
 }
+
+@media (max-width: 425px) {
+  .header-container {
+    padding: 8px 12px; /* Reducir el padding para dispositivos pequeños */
+  }
+
+  .header-title {
+    font-size: 1rem; /* Ajustar el tamaño del título */
+  }
+
+  .header-nav {
+    gap: 8px; /* Reducir el espacio entre los enlaces */
+  }
+
+  .menu-toggle {
+    width: 36px;
+    height: 36px; /* Ajustar el tamaño del botón del menú */
+  }
+}

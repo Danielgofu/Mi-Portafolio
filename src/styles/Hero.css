@@ -268,6 +268,30 @@ html,body{
   .hero-subtitle { font-size: 14px; }
 }
 
+@media (max-width: 425px) {
+  .hero-content {
+    box-shadow: 0 6px 20px rgba(2, 6, 23, 0.4); /* Reducir la intensidad de la sombra */
+    border-radius: 10px; /* Ajustar el borde para pantallas pequeñas */
+  }
+
+  .hero-avatar {
+    max-width: 100px; /* Reducir el tamaño del avatar */
+  }
+
+  .hero-title {
+    font-size: 18px; /* Ajustar el tamaño del título */
+  }
+
+  .hero-subtitle {
+    font-size: 14px; /* Ajustar el tamaño del subtítulo */
+  }
+
+  .hero-buttons {
+    flex-direction: column; /* Colocar los botones en una columna */
+    gap: 12px; /* Reducir el espacio entre los botones */
+  }
+}
+
 @media (max-width: 380px) {
   .hero-avatar { max-width: 120px; }
   .hero-title { font-size: 18px; }

@@ -22,6 +22,9 @@ function Header({ openIcon = defaultOpen, closeIcon = defaultClose }) {
         offsetY: 70, // Ajusta el desplazamiento para evitar que el header cubra la sección
       },
       ease: "power2.out",
+      onComplete: () => {
+        setActiveSection(sectionId.replace('#', '')); // Actualizar el estado activo
+      },
     });
   }
 };
