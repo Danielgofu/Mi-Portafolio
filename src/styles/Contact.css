@@ -59,6 +59,10 @@
   border-color: rgba(139,92,246,0.18);
 }
 
+input[name="hp"] {
+  display: none;
+}
+
 .hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 
 .contact-actions { display:flex; gap:10px; align-items:center; margin-top:6px; }

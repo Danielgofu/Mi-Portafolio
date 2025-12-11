@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Contact.css';
 
-// reemplaza por tu email en formsubmit.co
-const FORMSUBMIT_EMAIL = 'danielgofu8@gmail.com';
-const FORMSUBMIT_AJAX = `https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`;
-
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '', hp: '' });
   const [status, setStatus] = useState(null);
@@ -18,15 +14,21 @@ export default function Contact() {
       setStatus({ ok: false, msg: 'Rellena todos los campos.' });
       return;
     }
-    if (form.hp) {
-      setStatus({ ok: false, msg: 'Spam detectado.' });
+
+    if (!/\S+@\S+\.\S+/.test(form.email)) {
+      setStatus({ ok: false, msg: 'Introduce un correo válido.' });
+      return;
+    }
+
+    if (form.message.length < 10) {
+      setStatus({ ok: false, msg: 'El mensaje debe tener al menos 10 caracteres.' });
       return;
     }
 
     setStatus({ ok: null, msg: 'Enviando...' });
 
     try {
-      const res = await fetch(FORMSUBMIT_AJAX, {
+      const res = await fetch('https://formspree.io/f/xrbnlglp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +46,7 @@ export default function Contact() {
       const data = await res.json().catch(() => ({}));
 
       if (res.ok) {
-        setStatus({ ok: true, msg: 'Mensaje enviado. Revisa tu correo para confirmar (FormSubmit requiere verificar el email).' });
+        setStatus({ ok: true, msg: 'Mensaje enviado con éxito. ¡Gracias por contactarme!' });
         setForm({ name: '', email: '', message: '', hp: '' });
       } else {
         setStatus({ ok: false, msg: data?.message || 'Error al enviar el mensaje.' });
@@ -57,30 +59,45 @@ export default function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="contact-inner">
-        <h2 id="contact-title">Contacto</h2>
-        <p className="contact-desc">¿Tienes un proyecto o quieres colaborar? Escríbeme.</p>
+        <h2>Contacto</h2>
+        <p>Déjame un mensaje y me pondré en contacto contigo lo antes posible.</p>
+        <form 
+          onSubmit={handleSubmit} 
+          className="contact-form"
+          noValidate
+        >
+          <label htmlFor="name">Nombre</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            placeholder="Tu nombre" 
+            value={form.name} 
+            onChange={handleChange} 
+            required 
+          />
 
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
-          <label>
-            Nombre
-            <input name="name" value={form.name} onChange={handleChange} required />
-          </label>
+          <label htmlFor="email">Correo electrónico</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Tu correo" 
+            value={form.email} 
+            onChange={handleChange} 
+            required 
+          />
 
-          <label>
-            Email
-            <input name="email" type="email" value={form.email} onChange={handleChange} required />
-          </label>
-
-          {/* honeypot (visually hidden) */}
-          <label className="hp" aria-hidden="true">
-            Deja este campo vacío
-            <input name="hp" value={form.hp} onChange={handleChange} autoComplete="off" />
-          </label>
-
-          <label>
-            Mensaje
-            <textarea name="message" rows="6" value={form.message} onChange={handleChange} required />
-          </label>
+          <label htmlFor="message">Mensaje</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            placeholder="Tu mensaje" 
+            rows="5" 
+            value={form.message} 
+            onChange={handleChange} 
+            required
+          ></textarea>
 
           <div className="contact-actions">
             <button type="submit" className="btn btn-primary">Enviar mensaje</button>

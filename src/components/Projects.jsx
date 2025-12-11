@@ -1,12 +1,12 @@
 import '../styles/Projects.css';
 import dyfWeb from '../assets/DYFWeb.webp';
-// import styleLabPreview from '../assets/styleLabPreview.webp'; // Asegúrate de tener esta imagen en tu carpeta de assets
+import cssSandboxPreview from '../assets/cssSandboxPreview.webp';
 
 const sampleProjects = [
   {
     id: 1,
     title: 'Web Dyf Telecomunicaciones',
-    desc: 'Elaboración de sitio web estático para empresa de telecomunicaciones.',
+    desc: 'Sitio web corporativo para Dyf Telecomunicaciones, empresa especializada en instalación y mantenimiento de antenas, porteros automáticos, CCTV, redes y servicios eléctricos. Ofrece asesoría personalizada, atención a comunidades y soluciones integrales en Madrid.',
     tech: ['HTML', 'CSS', 'JS'],
     live: 'https://danielgofu.github.io/Dyf/index.html',
     repo: 'https://github.com/Danielgofu/Dyf',
@@ -14,12 +14,12 @@ const sampleProjects = [
   },
   {
     id: 2,
-    title: 'StyleLab',
-    desc: 'Editor visual para personalizar estilos CSS.',
-    tech: ['React', 'CSS'],
-    live: '/proyectos/style-lab', // Ruta interna definida en routes.jsx
-    repo: 'https://github.com/Danielgofu/StyleLab', // Cambia esto al repositorio real si existe
-    image: '' // Imagen del proyecto StyleLab
+    title: 'Css Sandbox',
+    desc: 'Editor visual interactivo para crear y personalizar temas CSS. Permite ajustar colores, tipografías, layouts y efectos, aplicar presets, exportar estilos y previsualizar en diferentes dispositivos. Ideal para diseñadores y desarrolladores que buscan prototipar interfaces de forma rápida.',
+    tech: ['React', 'Tailwind CSS'],
+    live: 'https://danielgofu.github.io/css-sandbox/',
+    repo: 'https://github.com/Danielgofu/css-sandbox',
+    image: cssSandboxPreview 
   },
   {
     id: 3,
